@@ -1,13 +1,17 @@
 public class SavingsAccount extends BankAccount{
     private double interestRate;
     
-    public SavingsAccount(String accountNumber, String clientID, double initialBalance, double interestRate){
+    public SavingsAccount(int accountNumber, int clientID, double initialBalance, double interestRate){
         super(accountNumber, clientID, initialBalance);
         this.interestRate = interestRate;
     }
     
     public double getInterestRate(){
         return interestRate;
+    }
+    
+    public void setInterestRate( int creditScore) {
+    	this.interestRate = calcInterestRate(creditScore);
     }
 
     @Override
@@ -28,5 +32,9 @@ public class SavingsAccount extends BankAccount{
     }
     public static boolean canOpenAccount(double initialBalance) {
         return initialBalance >= 100;
+    }
+    
+    public String toString() {
+    	return "SavingAccount [Account#: " + getAccountNumber() + ", ClientID: " + getClientID() + ", Balance: $" + getBalance() + ", Interest Rate:" + getInterestRate() + "]";
     }
 }
